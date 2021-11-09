@@ -19,5 +19,6 @@
     <mapper resource="com/yedam/saramin/company/service/company-map.xml" />
     <mapper resource="com/yedam/saramin/users/serviceImpl/Users-map.xml" />
     <mapper resource="com/yedam/saramin/adoptions/service/impl/adoption-map.xml" />
+    <mapper resource="com/yedam/saramin/resume/resumeMap.xml"/>
   </mappers>
 </configuration>

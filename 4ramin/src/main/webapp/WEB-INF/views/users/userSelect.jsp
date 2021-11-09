@@ -11,7 +11,7 @@
 		var resule = "";
 		ajax({
 			type : "post",
-			url : "이력서 셀렉트 할 do",
+			url : "UserResume.do",
 			async : false,
 
 		})
@@ -45,7 +45,7 @@
 </head>
 <body>
 	<br>
-	<div>
+	<div align="center">
 		<form id="frm" action="" method="post">
 			<div class="col-lg-4" align="center">
 				<div class="bg-light p-3 border rounded mb-4">

@@ -148,7 +148,7 @@
         <div class="row align-items-center">
           <div class="col-md-8">
             <h2 class="text-white">일을 찾고 계신가요?</h2>
-            <p class="mb-0 text-white lead">고객의 시간 확보를 방해합니다.</p>
+            <p class="mb-0 text-white lead">회원가입을 하여 인생을 갈아 넣으시길 바랍니다!</p>
           </div>
           <div class="col-md-3 ml-auto">
             <a href="UsersJoinForm.do" class="btn btn-warning btn-block btn-lg">가입하기 !</a>

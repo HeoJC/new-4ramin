@@ -27,7 +27,6 @@
             color: black;
         }
     </style>
-    
     <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↓ ------------------- -->
     <script type="text/javascript">
     	function adtbookmarkInsert() {
@@ -35,7 +34,6 @@
     	}
     </script>
     <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↑ ------------------- -->
-    
 </head>
 
 <body id="top">
@@ -158,8 +156,9 @@
         </form>
         <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↑ ------------------- -->
         </section>
-
-
+        
+        <iframe name="iframe" style="display:none;"></iframe>
+        
         <section class="site-section bg-light">
             <div class="container">
                 <div class="row mb-5">

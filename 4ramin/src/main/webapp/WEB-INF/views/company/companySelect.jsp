@@ -24,7 +24,7 @@
     			url : "companyLike.do?com_id=" + com_id ,
     			type : "get" ,
     			data : {
-    				com_id : com_id
+    				com_id : com_
     			} ,    			
     			success : function() {
     				likeview() 

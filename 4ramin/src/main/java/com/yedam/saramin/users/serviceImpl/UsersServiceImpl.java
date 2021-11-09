@@ -24,6 +24,12 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return map.usersSelect(vo);
 	}
+	
+	@Override
+	public UsersVO usersSelectlookup(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return map.usersSelectlookup(vo);
+	}
 
 	@Override
 	public int usersInsert(UsersVO vo) {
@@ -36,5 +42,12 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return map.usersDelete(vo);
 	}
+
+	@Override
+	public int usersUpdate(UsersVO vo) {
+		// TODO Auto-generated method stub
+		return map.usersUpdate(vo);
+	}
+
 
 }

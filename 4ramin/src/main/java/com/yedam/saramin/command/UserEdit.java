@@ -22,12 +22,6 @@ public class UserEdit implements Command {
 		vo.setUser_phone(request.getParameter("user_phone"));
 		vo.setUser_auth(request.getParameter("user_auth"));
 		
-		System.out.println(request.getParameter("user_name"));
-		System.out.println(request.getParameter("user_id"));
-		System.out.println(request.getParameter("user_password"));
-		System.out.println(request.getParameter("user_email"));
-		System.out.println(request.getParameter("user_phone"));
-		System.out.println(request.getParameter("user_auth"));
 		
 		int U = userDao.usersUpdate(vo);
 		String viewPage = null;
