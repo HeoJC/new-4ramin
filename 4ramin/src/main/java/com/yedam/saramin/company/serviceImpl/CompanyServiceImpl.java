@@ -57,4 +57,59 @@ public class CompanyServiceImpl implements CompanyService {
 	public int insertSalCompany(CompanyVO vo) {
 		return map.insertSalCompany(vo) ;
 	}
+
+	@Override
+	public int insertBranchCompany(CompanyVO vo) {
+		return map.insertBranchCompany(vo) ;
+	}
+
+	@Override
+	public int deleteSalCompany(CompanyVO vo) {
+		return map.deleteSalCompany(vo) ;
+	}
+
+	@Override
+	public int deleteBranchCompany(CompanyVO vo) {
+		return map.deleteBranchCompany(vo) ;
+	}
+
+	@Override
+	public int updateSalCompany(CompanyVO vo) {
+		return map.updateSalCompany(vo) ;
+	}
+
+	@Override
+	public int updateBranchCompany(CompanyVO vo) {
+		return map.updateBranchCompany(vo) ;
+	}
+
+	@Override
+	public List<CompanyVO> selectComBookMarkList(CompanyVO vo) {
+		return map.selectComBookMarkList(vo) ;
+	}
+
+	@Override
+	public int insertComBookMark(CompanyVO vo) {
+		return map.insertComBookMark(vo) ;
+	}
+
+	@Override
+	public int deleteComBookMark(CompanyVO vo) {
+		return map.deleteComBookMark(vo) ;
+	}
+
+	@Override
+	public List<CompanyVO> selectAdtBookMarkList(CompanyVO vo) {
+		return map.selectAdtBookMarkList(vo) ;
+	}
+
+	@Override
+	public int insertAdtBookMark(CompanyVO vo) {
+		return map.insertAdtBookMark(vo) ;
+	}
+
+	@Override
+	public int deleteAdtBookMark(CompanyVO vo) {
+		return map.deleteAdtBookMark(vo) ;
+	}
 }

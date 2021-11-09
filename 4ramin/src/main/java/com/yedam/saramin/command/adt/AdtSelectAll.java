@@ -22,8 +22,6 @@ public class AdtSelectAll implements Command {
 		request.setAttribute("adoptions", list);
 		request.setAttribute("pageName", "채용공고");
 		request.setAttribute("cnt", list.size());
-		
-		
 		return "adoptions/adtSelectAll";
 	}
 

@@ -22,16 +22,36 @@ public class AdtInsertFormSubmit implements Command {
 	public String run(HttpServletRequest request, HttpServletResponse response) {
 		Adoption adtVO = new Adoption();
 		AdoptionService adtDAO = new AdoptionServiceImpl();
+//		adtVO.setTitle(request.getParameter("title"));
+//		adtVO.setBody(request.getParameter("contents"));
+//		adtVO.setCom_id(request.getParameter("comId"));
+//		adtVO.setCareer(request.getParameter("career"));
+//		adtVO.setAdt_exp(request.getParameter("adtExp"));
+//		adtVO.setAdt_email(request.getParameter("email"));
+//		adtVO.setAdt_imgsrc(request.getParameter("imgSrc"));
+//		adtVO.setSal_type(request.getParameter("salType"));
+//		adtVO.setSal_howmuch((String)(request.getParameter("salHowmuch")));
+//		
+//		System.out.println(adtVO.getTitle()+" : "+adtVO.getAdt_imgsrc());
+		
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		
 		try {
+		
+
 	    ServletContext context =request.getSession().getServletContext();
 	    String saveDir = context.getRealPath("./imgUpload");
+		
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		File attachesDir = new File(saveDir);
+
 		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
 		fileItemFactory.setRepository(attachesDir);
 		fileItemFactory.setSizeThreshold(1024 * 1024);
 		ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
+		
 		String imgString = "";
 		String addressString = "";
 			List<FileItem> items;
@@ -71,6 +91,7 @@ public class AdtInsertFormSubmit implements Command {
 						System.out.println(item.getString("utf-8"));						
 						adtVO.setAdt_exp(item.getString("utf-8"));
 					}
+					
 					if(item.getFieldName().equals("postcode")) {
 						System.out.println(item.getString("utf-8"));						
 						addressString += item.getString("utf-8");
@@ -92,11 +113,14 @@ public class AdtInsertFormSubmit implements Command {
 						addressString += "$"+item.getString("utf-8");
 					}
 					adtVO.setAdt_address(addressString);
+					
+					
 				}else {
 					System.out.printf("파라미터명 : %s, 파일명 : %s,  파일크기 : %s bytes \n", item.getFieldName(), item.getName(), item.getSize());
 					imgString += "&"+item.getName();
 					adtVO.setAdt_imgsrc(imgString);
 					//tmp 경로: .metadata\plugins\org.eclipse.wst.server.core\tmp0
+					
 					System.out.println(attachesDir.getAbsolutePath());
 					if(item.getSize()>0) {
 						String separator = File.separator;
@@ -112,7 +136,12 @@ public class AdtInsertFormSubmit implements Command {
 			e.printStackTrace();
 		}
 		
+		
+		
+		
+		
 ///////////////////////////////////////////////////////////////////////////////////////////////////////		
+		
 		
 		int r = adtDAO.insertAdoption(adtVO);
 //		if(r!=1) {
