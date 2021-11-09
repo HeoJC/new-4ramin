@@ -2,7 +2,6 @@ package com.yedam.saramin.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.yedam.saramin.comm.Command;
 import com.yedam.saramin.company.service.CompanyService;

@@ -20,32 +20,23 @@ public class CompanyDelete implements Command {
 		vo.setCom_pw(request.getParameter("com_pw")) ;
 		vo.setCom_reg(request.getParameter("com_reg")) ;
 		
-		CompanyVO vo2 = new CompanyVO() ;
-		vo2.setCom_id(request.getParameter("com_id")) ;
-		
-		CompanyVO vo3 = new CompanyVO() ;
-		vo3.setCom_id(request.getParameter("com_id")) ;
-		
 		String id = String.valueOf(session.getAttribute("id")) ;
 		String viewPage = null ;
 		
-		if (!id.equals("admin")) {
-			session.invalidate() ;
-		}
-		
 		if (id.equals(request.getParameter("com_id")) || id.equals("admin")) {
 			int n = companyDao.deleteCompany(vo) ;
-			companyDao.deleteSalCompany(vo2) ;
-			companyDao.deleteBranchCompany(vo3) ;
-			
 			if (n != 0) {
 				viewPage = "main.do" ;
 			} else {
+				request.setAttribute("message", "정상적으로 탈퇴가 되지 않았습니다)") ;
 				viewPage = "company/companyDeleteForm" ;
 			}
 		} else {
+			request.setAttribute("message", "해당회사나 관리자만 수정할 수 있습니다") ;
 			viewPage = "company/companyDeleteForm" ;
 		}
+		
 		return viewPage ;
 	}
+
 }

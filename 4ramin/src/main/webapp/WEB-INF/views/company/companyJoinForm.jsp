@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>4RAMIN</title>
+<title>Insert title here</title>
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -48,11 +48,6 @@
 			frm.com_intro.focus() ;
 			return ;
 		}
-		if ( com_branch == "") {
-			alert("산업분야를 입력하세요") ;
-			frm.com_branch.focus() ;
-			return ;
-		}
 		if ( com_sal == "") {
 			alert("신입직원 평균연봉을 입력하세요") ;
 			frm.com_sal.focus() ;
@@ -68,6 +63,7 @@
 <body>
 <section class="site-section">
       <div class="container">
+
         <div class="row align-items-center mb-5">
           <div class="col-lg-8 mb-4 mb-lg-0">
             <div class="d-flex align-items-center">
@@ -91,7 +87,7 @@
               
               <div class="form-group">
                 <label for="job-title">* 비밀번호</label>
-                <input type="password" class="form-control" id="com_pw" name="com_pw" placeholder="기업의 로그인 비밀번호를 입력하세요">
+                <input type="text" class="form-control" id="com_pw" name="com_pw" placeholder="기업의 로그인 비밀번호를 입력하세요">
               </div>
               
               <div class="form-group">
@@ -115,11 +111,6 @@
               <div class="form-group">
               	<label for="email">* 기업소개</label>
               	<textarea id="com_intro" name="com_intro" cols="30" rows="7" class="form-control" placeholder="간단한 기업소개를 입력하세요"></textarea>
-              </div>
-              
-              <div class="form-group">
-                <label for="job-location">산업분야</label>
-                <input type="text" class="form-control" id="com_branch" name="com_branch" placeholder="기업의 산업분야를 입력하세요">
               </div>
               
               <div class="form-group">
@@ -149,7 +140,7 @@
               </div>
               
               <div class="form-group">
-                <label for="job-region">* 신입 평균 연봉</label>
+                <label for="job-region">*신입 평균 연봉</label>
                 <select class="selectpicker border rounded" id="com_sal" name="com_sal" data-style="btn-black" data-width="100%" data-live-search="true" title="신입직원의 평균연봉을 선택하세요">
                       <option>2,400만원 미만</option>
                       <option>2,400만원 이상 2,500만원 미만</option>
@@ -183,6 +174,7 @@
     <script src="js/stickyfill.min.js"></script>
     <script src="js/jquery.fancybox.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
+    
     <script src="js/jquery.waypoints.min.js"></script>
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>

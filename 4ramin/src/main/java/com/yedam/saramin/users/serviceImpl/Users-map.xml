@@ -6,19 +6,11 @@
 		resultType="com.yedam.saramin.users.service.UsersVO">
 		select * from users
 	</select>
-	
 
 	<select id="usersSelect"
 		resultType="com.yedam.saramin.users.service.UsersVO">
 		select * from users where user_id = #{user_id}
-		<if test="user_password != null">
-			and user_password = #{user_password}
-		</if>
 	</select>
-	
-	<update id="usersUpdate" parameterType="com.yedam.saramin.users.service.UsersVO">
-		update users set user_password = #{user_password} , user_name = #{user_name} , user_phone = #{user_phone}, user_email = #{user_email}, user_auth = #{user_auth} where user_id = #{user_id}
-	</update>
 
 	<insert id="usersInsert"
 		parameterType="com.yedam.saramin.users.service.UsersVO">

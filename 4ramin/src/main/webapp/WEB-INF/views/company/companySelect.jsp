@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>4RAMIN</title>
+<title>Insert title here</title>
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -24,7 +23,7 @@
     			url : "companyLike.do?com_id=" + com_id ,
     			type : "get" ,
     			data : {
-    				com_id : com_
+    				com_id : com_id
     			} ,    			
     			success : function() {
     				likeview() 
@@ -54,6 +53,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
+    	  console.log('${salary.com_id}');
         var data = google.visualization.arrayToDataTable([
           ['연도', '평균연봉 (단위 : 만원)'],
           ['2019', '${salary.sal_2019}'],
@@ -71,23 +71,6 @@
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
 
         chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-      
-      function insertBookmark(com_id,com_name,com_intro,com_sal) {
-    	  $.ajax({
-    		  url : "comBookmarkInsert.do" ,
-    		  type : "get" ,
-    		  data : {
-    			  com_id : com_id ,
-    			  com_name : com_name ,
-    			  com_intro : com_intro ,
-    			  com_sal : com_sal
-    		  } ,
-    		  success : function() {
-    			  alert("기업 즐겨찾기에 추가되었습니다") ;
-    			  return ;
-    		  }
-    	  })
       }
     </script>
     
@@ -108,13 +91,9 @@
           </div>
           <div class="col-lg-4">
             <div class="row">
-              <c:if test="${empty com_reg }">
-              <c:if test="${id != 'admin' }">
               <div class="col-6">
-                <a onclick="insertBookmark('${company.com_id}','${company.com_name}','${company.com_intro}','${company.com_sal}')" href="javascript:void(0)" class="btn btn-block btn-light btn-md">기업 즐겨찾기</a>
+                <a href="#" class="btn btn-block btn-light btn-md">즐겨찾기 추가</a>
               </div>
-              </c:if>
-              </c:if>
               <div class="col-6">
                 <a onclick="likeplus()" href="javascript:void(0)" id="like" class="btn btn-block btn-primary btn-md"><span class="icon-heart-o mr-2 text-danger"></span>좋아요 : ${company.com_like }</a>
               </div>

@@ -126,6 +126,33 @@ function ModalDelivery(v) {
 
 }
 
+function DeleteFunction() {
+	 var cnt = $("input[name='reportChkBxRow']:checked").length;
+     var arr = new Array();
+     $("input[name='reportChkBxRow']:checked").each(function() {
+         arr.push($(this).attr('id'));
+     })x;
+     if(cnt == 0){
+         alert("선택된 글이 없습니다.");
+     }
+     else{
+         $.ajax = {
+             type: "get"
+             url: "UserDeleto.do"
+             data: "arr=" + arr + "&CNT=" + cnt,
+             dataType:"json",
+             success: function(jdata){
+                 if(jdata != 1) {
+                     alert("삭제 오류");
+                 }
+                 else{
+                     alert("삭제 성공");
+                 }
+             },
+             error: function(){alert("서버통신 오류");}
+         };
+     }
+ }
 </script>
 </head>
 <body>
@@ -154,11 +181,19 @@ function ModalDelivery(v) {
 							<td align="center">${user.user_phone }</td>
 							<td align="center">${user.user_email }</td>
 							<td align="center">${user.user_auth }</td>
-							
+							<td><input type="checkbox" onclick="event.cancelBubble=true"
+								name="reportChkBxRow" id="'${user.user_id }'"></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
+			<br>
+			<div align="right">
+				<!-- 어드민만 버튼 보이게.. -->
+				<input type="button" onclick="DeleteFunction()"
+					value="삭제">
+			</div>
+
 		</div>
 	</div>
 
@@ -182,7 +217,6 @@ function ModalDelivery(v) {
 								<th width="200">이메일</th>
 								<th width="200">권한</th>
 							</tr>
-							<!-- 단건 조회 -->
 							<tr id="one" align="center" />
 						</table>
 					</div>

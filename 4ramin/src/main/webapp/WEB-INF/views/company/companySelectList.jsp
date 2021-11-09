@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>4RAMIN</title>
+<title>Insert title here</title>
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -17,6 +17,10 @@
 </head>
 <body>
 <div align="center">
+<br>
+<div class="col-12 text-center" data-aos="fade">
+  <h2 class="section-title mb-3">등록 기업 목록</h2>
+</div>
 <div>
 <section class="site-section services-section bg-light block__62849" id="next-section">
       <div class="container">        

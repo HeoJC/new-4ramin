@@ -1,12 +1,10 @@
 package com.yedam.saramin.resume;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class ResumeVO {
 
 	private int rsm_idx;
-	private String rsm_name;
-
 	private String user_id;
 	private Date rsm_birthday;
 	private String rsm_gender;
@@ -15,16 +13,7 @@ public class ResumeVO {
 	private String rsm_certificate;
 	private String rsm_photo;
 	private String rsm_tel;
-	private String rsm_title;
 	
-	public String getRsm_title() {
-		return rsm_title;
-	}
-
-	public void setRsm_title(String rsm_title) {
-		this.rsm_title = rsm_title;
-	}
-
 	public ResumeVO() {}
 
 	public int getRsm_idx() {
@@ -98,12 +87,6 @@ public class ResumeVO {
 	public void setRsm_tel(String rsm_tel) {
 		this.rsm_tel = rsm_tel;
 	}
-		
-	public String getRsm_name() {
-		return rsm_name;
-	}
 	
-	public void setRsm_name(String rsm_name) {
-		this.rsm_name = rsm_name;
-	}
+	
 }

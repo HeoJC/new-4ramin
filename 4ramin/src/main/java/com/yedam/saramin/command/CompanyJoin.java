@@ -36,15 +36,9 @@ public class CompanyJoin implements Command {
 		vo2.setSal_2021(request.getParameter("com_sal")) ;
 		
 		companyDao.insertSalCompany(vo2) ;
-
-		CompanyVO vo3 = new CompanyVO() ;
-		
-		vo3.setCom_id(request.getParameter("com_id")) ;
-		vo3.setCom_branch(request.getParameter("com_branch")) ;
-		
-		companyDao.insertBranchCompany(vo3) ;
 		
 		String viewPage = null ;
+		
 		if (n != 0) {
 			viewPage = "loginForm.do" ;
 		} else {

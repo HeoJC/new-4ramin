@@ -1,18 +1,12 @@
--------------------------사용자생성-------------------------
-
-사용자 생성
-cmd -> sqlplus "/as sysdba" -> create user yedam identified by 1234 ; -> grant connect , resource to yedam ;
-cmd -> sqlplus "/as sysdba" -> grant create view to yedam ;
-
 -------------------------테이블삭제-------------------------
 
 drop table company ;
 drop table branches ;
+drop table adoptions ;
 drop table reviews ;
 drop table avgsal ;
-drop table comBookmark ;
-drop table adtBookmark ;
 
+drop sequence a_seq ;
 drop sequence r_seq ;
 
 -------------------------테이블생성, 시퀀스생성, 샘플데이터입력-------------------------
@@ -23,10 +17,10 @@ com_id varchar2(20) PRIMARY KEY,       -- 기업 로그인 아이디
 com_pw varchar2(50) ,                  -- 기업 로그인 비밀번호
 com_name varchar2(100) ,               -- 기업명
 com_intro varchar2(300) ,              -- 기업소개
-com_phone varchar2(100) ,               -- 기업 전화번호
+com_phone varchar2(20) ,               -- 기업 전화번호
 com_email varchar2(100) ,              -- 기업 대표 이메일
 com_loc varchar2(300) ,                -- 기업 위치
-com_reg varchar2(100) ,                 -- 기업 사업자 번호
+com_reg varchar2(20) ,                 -- 기업 사업자 번호
 com_imp varchar2(100) ,                 -- 기업 직원수
 com_man varchar2(100) ,                 -- 기업 인사 담당자명
 com_sal varchar2(100) ,                 -- 기업 신입 평균 연봉
@@ -66,8 +60,8 @@ insert into company values('major','1234','애드메이저','광고 대행업','
 -- 평균연봉 테이블 --
 create table avgsal (
 com_id varchar2(20) PRIMARY KEY ,
-sal_2019 varchar2(100) default 0 ,
-sal_2020 varchar2(100) default 0 ,
+sal_2019 varchar2(100) ,
+sal_2020 varchar2(100) ,
 sal_2021 varchar2(100) 
 );
 
@@ -101,6 +95,32 @@ insert into branches values('vaunce','서비스업') ;
 insert into branches values('donga','인쇄업') ;
 insert into branches values('major','광고대행업') ;
 
+-- 채용공고 테이블 --
+create table adoptions (
+adt_idx number PRIMARY KEY,
+com_id varchar2(20) ,
+title varchar2(150) ,
+body varchar2(300)
+) ;
+
+-- 채용공고 시퀀스 --
+create sequence a_seq
+start with 1
+increment by 1
+minvalue 1 ;
+
+-- 채용공고 샘플 데이터 --
+insert into adoptions values(a_seq.nextval,'maru','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'raon','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'simons','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'sias','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'daham','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'bean','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'sungwon','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'vaunce','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'donga','채용공고 제목','채용공고 내용');
+insert into adoptions values(a_seq.nextval,'major','채용공고 제목','채용공고 내용');
+
 -- 기업평가 테이블 --
 create table reviews (
 rev_idx number PRIMARY KEY,
@@ -118,46 +138,12 @@ minvalue 1 ;
 -- 기업평가 샘플 데이터 --
 insert into reviews values(r_seq.nextval,'maru','hong','여기 사장님이 이상해요') ;
 
--- 기업 즐겨찾기 테이블 --
-create table comBookmark (
-user_id varchar2(20) ,
-com_id varchar2(20) PRIMARY KEY,
-com_name varchar2(100) ,
-com_intro varchar2(300) ,
-com_sal varchar2(100) ,
-marked_date date default sysdate
-) ;
-
--- 기업 즐겨찾기 샘플 데이터 --
-insert into comBookmark values('AAA','maru','마루일번지','기타 건축자재 도매업','2760만원',sysdate) ;
-insert into comBookmark values('AAA','raon','라온디어스','광고 대행업','2500만원',sysdate) ;
-insert into comBookmark values('AAB','raon','라온디어스','광고 대행업','2500만원',sysdate) ;
-
--- 공고 즐겨찾기 테이블 --
-create table adtBookmark (
-adt_idx number ,
-user_id varchar2(20) ,
-com_id varchar2(20) ,
-title varchar2(800) PRIMARY KEY,
-adt_exp varchar2(100)
-) ;
-
--- 공고 즐겨찾기 샘플 데이터 --
-insert into adtBookmark values(1,'AAA','maru','공고테스트 제목','공고 추가한 날짜') ;
-insert into adtBookmark values(2,'AAA','raon','공고테스트 제목2','공고 추가한 날짜') ;
-insert into adtBookmark values(1,'AAB','maru','공고테스트 제목3','공고 추가한 날짜') ;
-
--- 공고 즐겨찾기 select 예시 --
-select c.com_name , a.title , a.adt_exp , a.adt_idx from company c join adtBookmark a on c.com_id = a.com_id 
-where a.user_id = 'AAA' ;
-
 -------------------------테이블조회-------------------------
 
 select * from company ;
 select * from branches ;
+select * from adoptions ;
 select * from reviews ;
 select * from avgsal ;
-select * from comBookmark ;
-select * from adtBookmark ;
 
 commit ;
