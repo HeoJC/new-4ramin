@@ -46,6 +46,8 @@ public class CompanyUpdate implements Command {
 			companyDao.updateSalCompany(vo2) ;
 			companyDao.updateBranchCompany(vo3) ;
 			
+			session.setAttribute("pw", vo.getCom_pw()) ;
+			
 			if (n != 0) {
 				request.setAttribute("message", "정보가 수정되었습니다") ;
 				viewPage = "companyMyInfo.do" ;

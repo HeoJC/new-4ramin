@@ -15,6 +15,7 @@ public class ComBookMarkDelete implements Command {
 		// 기업북마크 삭제
 		CompanyService companyDao = new CompanyServiceImpl() ;
 		CompanyVO vo = new CompanyVO() ;
+		
 		vo.setCom_id(request.getParameter("com_id")) ;
 		
 		companyDao.deleteComBookMark(vo) ;

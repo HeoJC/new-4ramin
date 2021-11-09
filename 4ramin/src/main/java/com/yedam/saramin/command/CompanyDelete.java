@@ -29,14 +29,14 @@ public class CompanyDelete implements Command {
 		String id = String.valueOf(session.getAttribute("id")) ;
 		String viewPage = null ;
 		
-		if (!id.equals("admin")) {
-			session.invalidate() ;
-		}
-		
 		if (id.equals(request.getParameter("com_id")) || id.equals("admin")) {
 			int n = companyDao.deleteCompany(vo) ;
 			companyDao.deleteSalCompany(vo2) ;
 			companyDao.deleteBranchCompany(vo3) ;
+			
+			if (!id.equals("admin")) {
+				session.invalidate() ;
+			}
 			
 			if (n != 0) {
 				viewPage = "main.do" ;

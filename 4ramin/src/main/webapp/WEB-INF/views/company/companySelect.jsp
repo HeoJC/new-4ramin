@@ -86,6 +86,9 @@
     		  success : function() {
     			  alert("기업 즐겨찾기에 추가되었습니다") ;
     			  return ;
+    		  } ,
+    		  error : function() {
+    			  alert("이미 즐겨찾기에 추가되어있습니다") ;
     		  }
     	  })
       }

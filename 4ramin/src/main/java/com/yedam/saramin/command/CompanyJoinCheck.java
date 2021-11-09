@@ -8,21 +8,24 @@ import com.yedam.saramin.company.service.CompanyService;
 import com.yedam.saramin.company.service.CompanyVO;
 import com.yedam.saramin.company.serviceImpl.CompanyServiceImpl;
 
-public class AdtBookmarkDelete implements Command {
+public class CompanyJoinCheck implements Command {
 
 	@Override
 	public String run(HttpServletRequest request, HttpServletResponse response) {
-		// 공고북마크 삭제
+		// 기업 회원가입 아이디 중복 체크
 		CompanyService companyDao = new CompanyServiceImpl() ;
 		CompanyVO vo = new CompanyVO() ;
+		vo.setCom_id(request.getParameter("com_id")) ;
 		
-		vo.setTitle(request.getParameter("title")) ;
+		String message = "" ;
 		
-		companyDao.deleteAdtBookMark(vo) ;
+		if(companyDao.selectCompany(vo) != null) {
+			message = "이미 가입된 아이디입니다" ;
+		} else {
+			message = "가입 가능한 아이디입니다" ;
+		}
 		
-		String viewPage = "bookMarkForm.do" ;
-		
-		return viewPage ;
+		return "ajax:" + message ;
 	}
 
 }

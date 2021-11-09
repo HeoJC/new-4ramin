@@ -24,13 +24,7 @@ public class AdtBookmarkInsert implements Command {
 		vo.setUser_id(id) ;
 		vo.setCom_id(request.getParameter("com_id")) ;
 		vo.setTitle(request.getParameter("title")) ;
-		vo.setAdt_exp(request.getParameter("adt_exp")) ;	
-		
-		System.out.println(request.getParameter("adt_idx"));
-		System.out.println(id);
-		System.out.println(request.getParameter("com_id"));
-		System.out.println(request.getParameter("title"));
-		System.out.println(request.getParameter("adt_exp"));
+		vo.setAdt_exp(request.getParameter("adt_exp")) ;
 		
 		companyDao.insertAdtBookMark(vo) ;
 		
