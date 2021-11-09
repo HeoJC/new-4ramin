@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.saramin.company.service.CompanyMapper">
+
+	<select id="selectCompanyList" resultType="com.yedam.saramin.company.service.CompanyVO">
+		select * from company 
+	</select>
+
+	<select id="selectCompany" resultType="com.yedam.saramin.company.service.CompanyVO">
+		select * from company where com_id = #{com_id}
+		<if test="com_pw != null">
+			and com_pw = #{com_pw}
+		</if>
+		<if test="com_reg != null">
+			and com_reg = #{com_reg}
+		</if>
+		
+	</select>
+	
+	<select id="selectLikeCompany" resultType="com.yedam.saramin.company.service.CompanyVO">
+		select com_like from company where com_id = #{com_id}
+	</select>
+
+	<select id="selectSalCompany" resultType="com.yedam.saramin.company.service.CompanyVO">
+		select * from avgsal where com_id = #{com_id}
+	</select>
+	
+	<select id="selectComBookMarkList" resultType="com.yedam.saramin.company.service.CompanyVO">
+		select * from comBookmark where user_id = #{user_id}
+	</select>
+	
+	<select id="selectAdtBookMarkList" resultType="com.yedam.saramin.company.service.CompanyVO">
+		select c.com_name , a.adt_idx , a.title , a.adt_exp from company c join adtBookmark a on c.com_id = a.com_id where a.user_id = #{user_id}
+	</select>
+	
+	<insert id="insertCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		insert into company values(#{com_id},#{com_pw},#{com_name},#{com_intro},#{com_phone},#{com_email},#{com_loc},#{com_reg},#{com_imp},#{com_man},#{com_sal},0)
+	</insert>
+	
+	<insert id="insertSalCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		insert into avgsal values(#{com_id},0,0,#{sal_2021})
+	</insert>
+
+	<insert id="insertBranchCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		insert into branches values(#{com_id},#{com_branch})
+	</insert>
+	
+	<insert id="insertComBookMark" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		insert into comBookmark values(#{user_id},#{com_id},#{com_name},#{com_intro},#{com_sal},sysdate)
+	</insert>
+	
+	<insert id="insertAdtBookMark" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		insert into adtBookmark values(#{adt_idx},#{user_id},#{com_id},#{title},#{adt_exp})
+	</insert>
+	
+	<delete id="deleteCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		delete from company where com_id = #{com_id} and com_pw = #{com_pw} and com_reg = #{com_reg}
+	</delete>
+	
+	<delete id="deleteSalCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		delete from avgsal where com_id = #{com_id}
+	</delete>
+
+	<delete id="deleteBranchCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		delete from branches where com_id = #{com_id}	
+	</delete>
+	
+	<delete id="deleteComBookMark" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		delete from comBookmark where com_id = #{com_id}
+	</delete>
+	
+	<delete id="deleteAdtBookMark" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		delete from adtBookmark where title = #{title}
+	</delete>
+
+	<update id="updateCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		update company set com_pw = #{com_pw}, com_intro = #{com_intro}, com_phone = #{com_phone}, com_email = #{com_email}, com_loc = #{com_loc}, com_imp = #{com_imp}, com_man = #{com_man}, com_sal = #{com_sal} where com_id = #{com_id} 
+	</update>
+	
+	<update id="updateSalCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		update avgsal set sal_2021 = #{sal_2021} where com_id = #{com_id}
+	</update>
+	
+	<update id="updateBranchCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		update branches set com_branch = #{com_branch} where com_id = #{com_id}
+	</update>	
+	
+	<update id="likeCompany" parameterType="com.yedam.saramin.company.service.CompanyVO">
+		update company set com_like = com_like + 1 where com_id = #{com_id}
+	</update>
+
+</mapper>

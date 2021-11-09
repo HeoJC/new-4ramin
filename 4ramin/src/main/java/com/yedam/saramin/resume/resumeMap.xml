@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.saramin.resume.ResumeMapper">
+
+	<select id="resumeSelectList" 
+		resultType = "com.yedam.saramin.resume.ResumeVO">
+		select * from resumes
+		</select>
+	
+	<select id="resumeSelect" resultType="com.yedam.saramin.resume.ResumeVO">
+		select * from resumes where rsm_idx = #{rsm_idx}	
+	</select>
+	
+	<select id="resumeSelectID" resultType="com.yedam.saramin.resume.ResumeVO">
+		select * from resumes where user_id = #{user_id}
+	</select>
+	
+	
+	<insert id="resumeInsert" parameterType="com.yedam.saramin.resume.ResumeVO">
+	insert into resumes
+	values(res_seq.nextval,#{rsm_name},#{user_id},#{rsm_birthday},#{rsm_gender},#{rsm_education},#{rsm_career},#{rsm_certificate},#{rsm_photo},#{rsm_tel},#{rsm_title})
+	</insert>
+	
+	<delete id="resumeDelete" parameterType="com.yedam.saramin.resume.ResumeVO">
+		delete from resumes where rsm_idx = #{rsm_idx}
+	</delete>
+	
+	<update id="resumeUpdate" parameterType="com.yedam.saramin.resume.ResumeVO">
+		update resumes 
+		set name=#{rsm_name},education = #{rsm_education},career = #{rsm_career},certificate = #{rsm_certificate},photo = #{rsm_photo},tel = #{rsm_tel},title = #{rsm_title}
+		where id = #{rsm_idx}
+	</update>
+</mapper>	
+	

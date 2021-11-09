@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.saramin.adoptions.service.AdoptionMapper">
+
+	<select id="selectAdoptionAll" resultType="com.yedam.saramin.adoptions.Adoption">
+		select * from adoptions
+	</select>
+
+	<select id="selectAdoptionByComId" resultType="com.yedam.saramin.adoptions.Adoption">
+		select * from adoptions where com_id = #{com_id}
+	</select>
+	
+	<select id="selectAdoptionByAdtIdx" resultType="com.yedam.saramin.adoptions.Adoption">
+		select * from adoptions where adt_idx = #{adt_idx}
+	</select>
+
+	<insert id="insertAdoption" parameterType="com.yedam.saramin.adoptions.Adoption">
+		insert into adoptions values (a_seq.nextval, #{com_id}, #{title}, #{body}, #{career}, to_date(#{adt_exp},'yyyy-MM-dd'), #{adt_email}, #{adt_imgsrc}, #{sal_type}, #{sal_howmuch}, #{adt_address})
+	</insert>
+
+	<delete id="deleteAdoption" parameterType="com.yedam.saramin.adoptions.Adoption">
+	</delete>
+
+	<update id="updateAdoption" parameterType="com.yedam.saramin.adoptions.Adoption">
+	</update>
+
+</mapper>
