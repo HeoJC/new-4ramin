@@ -71,6 +71,7 @@
 
 									<li><a href="UsersJoinForm.do">회원가입</a></li>
 									<li><a href="UserList.do">회원목록</a></li>
+									<li><a href="UserSelect.do">내정보보기</a></li>
 								</ul>
 							</li>
 							<!-- 최창인 End -->
