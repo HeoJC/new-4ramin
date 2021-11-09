@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>4RAMIN</title>
 	<link rel="stylesheet" href="css/custom-bs.css">
 	<link rel="stylesheet" href="css/jquery.fancybox.min.css">
 	<link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -28,7 +28,7 @@
 				return 
 			}
 			if ( id1 != id2 ) {
-				alert("아이디가 일치하지 않습니다")
+				alert("본인의 아이디와 일치하지 않습니다")
 				frm.com_id.focus() ;
 				return
 			}

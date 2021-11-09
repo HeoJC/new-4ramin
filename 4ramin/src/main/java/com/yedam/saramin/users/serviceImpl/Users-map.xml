@@ -10,6 +10,9 @@
 	<select id="usersSelect"
 		resultType="com.yedam.saramin.users.service.UsersVO">
 		select * from users where user_id = #{user_id}
+		<if test="user_password != null">
+			and user_password = #{user_password}
+		</if>
 	</select>
 
 	<insert id="usersInsert"

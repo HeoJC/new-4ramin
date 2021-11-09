@@ -3,7 +3,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>JobBoard &mdash; Website Template by Colorlib</title>
+<title>4RAMIN</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,13 +21,11 @@
 <script src="js/jquery.min.js"></script>
 
 <script type="text/javascript">
-	function loginCheck() { 
+	function companyLogin() { 
 		var com_id = $("#com_id").val() ;
 		var com_pw = $("#com_pw").val() ;
 		var com_reg = $("#com_reg").val() ;
-		console.log($("#com_id").val())
-		console.log($("#com_pw").val())
-		console.log($("#com_reg").val())
+		
 		$.ajax({
 			url : "companyLogin.do" ,
 			type : "get" ,
@@ -39,11 +37,33 @@
 			datatype : "json" ,
 			success: function() {
 				location.href = "main.do" ; 
-		    },
-		    error: function() {
-		        alert("아이디 혹은 비밀번호 혹은 사업자번호를 다시 확인하세요");
+		    } ,
+		    error : function() {
+		        alert("아이디 혹은 비밀번호 혹은 사업자번호를 다시 확인하세요") ;
 		        return ;
 		    }
+		})
+	}
+	
+	function userLogin() {
+		var user_id = $("#user_id").val() ;
+		var user_password = $("#user_password").val() ;
+		
+		$.ajax({
+			url : "userLogin.do" ,
+			type : "get" ,
+			data : {
+				user_id : user_id ,
+				user_password : user_password
+			} ,
+			datatype : "json" ,
+			success : function() {
+				location.href = "main.do" ;
+			} ,
+			error : function() {
+				alert("아이디 혹은 비밀번호를 다시 확인하세요") ;
+				return ;
+			}
 		})
 	}
 </script>
@@ -64,27 +84,27 @@
 							<div class="col-md-12 mb-3 mb-md-0">
 								<label class="text-black" for="fname">아이디</label> <input
 									type="text" id="com_id" name="com_id" class="form-control"
-									placeholder="businessperson - ID">
+									placeholder="기업 로그인 아이디를 입력하세요">
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0">
 								<label class="text-black" for="fname">비밀번호</label> <input
 									type="password" id="com_pw" name="com_pw" class="form-control"
-									placeholder="Password">
+									placeholder="기업 로그인 비밀번호를 입력하세요">
 							</div>
 						</div>
 						<div class="row form-group mb-4">
 							<div class="col-md-12 mb-3 mb-md-0">
 								<label class="text-black" for="fname">사업자 번호</label> <input
 									type="password" id="com_reg" name="com_reg" class="form-control"
-									placeholder="businessperson - number">
+									placeholder="사업자 등록번호를 입력하세요">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
-								<input type="button" value="Log in" onclick="loginCheck()"
+								<input type="button" value="Log in" onclick="companyLogin()"
 									class="btn px-4 btn-primary text-white">
 							</div>
 						</div>
@@ -93,26 +113,26 @@
 				</div>
 				<div class="col-lg-6">
 					<h2 class="mb-4">회원용 로그인</h2>
-					<form action="#" class="p-4 border rounded">
+					<form id="frm2" action="UserLogin.do" class="p-4 border rounded">
 
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0">
 								<label class="text-black" for="fname">아이디</label> <input
-									type="text" id="fname" class="form-control"
-									placeholder="User - ID">
+									type="text" id="user_id" name="user_id" class="form-control"
+									placeholder="개인 로그인 아이디를 입력하세요">
 							</div>
 						</div>
 						<div class="row form-group mb-4">
 							<div class="col-md-12 mb-3 mb-md-0">
 								<label class="text-black" for="fname">비밀번호</label> <input
-									type="password" id="fname" class="form-control"
-									placeholder="Password">
+									type="password" id="user_password" name="user_password" class="form-control"
+									placeholder="개인 로그인 비밀번호를 입력하세요">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
-								<input type="submit" value="Log In"
+								<input type="button" value="Log In" onclick="userLogin()"
 									class="btn px-4 btn-primary text-white">
 							</div>
 						</div>

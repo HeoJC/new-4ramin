@@ -15,7 +15,7 @@ public class CompanyUpdate implements Command {
 	public String run(HttpServletRequest request, HttpServletResponse response) {
 		// 기업 회원정보 수정
 		HttpSession session = request.getSession() ;
-		CompanyService compnayDao = new CompanyServiceImpl() ;
+		CompanyService companyDao = new CompanyServiceImpl() ;
 		CompanyVO vo = new CompanyVO() ;
 		
 		vo.setCom_id(request.getParameter("com_id")) ; // where 조건
@@ -28,11 +28,23 @@ public class CompanyUpdate implements Command {
 		vo.setCom_man(request.getParameter("com_man")) ;
 		vo.setCom_sal(request.getParameter("com_sal")) ;
 		
+		CompanyVO vo2 = new CompanyVO() ;
+		
+		vo2.setCom_id(request.getParameter("com_id")) ;
+		vo2.setSal_2021(request.getParameter("com_sal")) ;
+		
+		CompanyVO vo3 = new CompanyVO() ;
+		
+		vo3.setCom_id(request.getParameter("com_id")) ;
+		vo3.setCom_branch(request.getParameter("com_branch")) ;		
+		
 		String id = String.valueOf(session.getAttribute("id")) ;
 		String viewPage = null ;
 		
 		if (id.equals(request.getParameter("com_id")) || id.equals("admin")) {
-			int n = compnayDao.updateCompany(vo) ;
+			int n = companyDao.updateCompany(vo) ;
+			companyDao.updateSalCompany(vo2) ;
+			companyDao.updateBranchCompany(vo3) ;
 			
 			if (n != 0) {
 				request.setAttribute("message", "정보가 수정되었습니다") ;

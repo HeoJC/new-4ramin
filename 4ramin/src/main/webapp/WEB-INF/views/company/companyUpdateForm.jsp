@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>4RAMIN</title>
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -16,21 +16,32 @@
 <script type="text/javascript">
 	function companyUpdate() {
 		
+		var com_id = frm.com_id.value ;
 		var com_pw = frm.com_pw.value ;
 		var com_intro = frm.com_intro.value ;
+		var com_branch = frm.com_branch.value ;
 		var com_sal = frm.com_sal.value ;
 		
-		if ( com_pw == "") {
+		if ( com_id =="" ) {
+			alert("해당 기업만 수정할 수 있습니다") ;
+			return ;
+		}
+		if ( com_pw == "" ) {
 			alert("비밀번호를 입력하세요") ;
 			frm.com_pw.focus() ;
 			return ;
 		}
-		if ( com_intro == "") {
+		if ( com_intro == "" ) {
 			alert("기업소개를 입력하세요") ;
 			frm.com_intro.focus() ;
 			return ;
 		}
-		if ( com_sal == "") {
+		if ( com_branch == "" ) {
+			alert("산업분야를 입력하세요") ;
+			frm.com_branch.focus() ;
+			return ;
+		}
+		if ( com_sal == "" ) {
 			alert("신입직원 평균연봉을 입력하세요") ;
 			frm.com_sal.focus() ;
 			return ;
@@ -42,6 +53,13 @@
 	}
 	
 	function companyDelete() {
+		
+		var com_id = frm.com_id.value ;
+		
+		if ( com_id =="" ) {
+			alert("해당 기업만 탈퇴할 수 있습니다") ;
+			return ;
+		}
 		
 		frm.action = "companyDeleteForm.do" ;
 		frm.submit() ;
@@ -70,7 +88,7 @@
               <br>
               <h6 class="text-black mb-5 border-bottom pb-2">*표시는 필수입력사항입니다</h6>
               
-              <h6 class="text-black mb-5 border-bottom pb-2">아이디 : ${company.com_id }</h6>
+              <h6 class="text-black mb-5 border-bottom pb-2" id="com_id">아이디 : ${company.com_id }</h6>
               <h6 class="text-black mb-5 border-bottom pb-2">사업자등록번호 : ${company.com_reg }</h6>
               <h6 class="text-black mb-5 border-bottom pb-2">기업명 : ${company.com_name }</h6>
                         
@@ -87,6 +105,11 @@
               <div class="form-group">
               	<label for="email">* 기업소개</label>
               	<textarea id="com_intro" name="com_intro" cols="30" rows="7" class="form-control" placeholder="간단한 기업소개를 입력하세요"></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label for="job-location">* 산업분야</label>
+                <input type="text" class="form-control" id="com_branch" name="com_branch" placeholder="기업의 산업분야를 입력하세요">
               </div>
               
               <div class="form-group">
@@ -116,7 +139,7 @@
               </div>
               
               <div class="form-group">
-                <label for="job-region">신입 평균 초임</label>
+                <label for="job-region">* 신입 평균 초임</label>
                 <select class="selectpicker border rounded" id="com_sal" name="com_sal" data-style="btn-black" data-width="100%" data-live-search="true" title="신입직원의 평균초임을 선택하세요">
                       <option>2,400만원 미만</option>
                       <option>2,400만원 이상 2,500만원 미만</option>
