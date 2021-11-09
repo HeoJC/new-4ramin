@@ -7,7 +7,7 @@ public interface UsersService {
 	UsersVO userssSelect(UsersVO vo);
 	
 	int usersInsert(UsersVO vo);
-	int usersUpdate(UsersVO vo);
+
 	int usersDelete(UsersVO vo);
 
 }

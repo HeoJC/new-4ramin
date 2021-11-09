@@ -156,11 +156,11 @@
                             <!--                       <option>Anywhere</option> -->
                             <!--                     </select> -->
 
-                            <br><input type="text" id="postcode" name="postcode" placeholder="우편번호" disabled>
+                            <br><input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly>
                             <input type="button" onclick="openPostCode()" value="우편번호 찾기"><br>
-                            <input type="text" id="address" name="address" placeholder="주소" disabled><br>
+                            <input type="text" id="address" name="address" placeholder="주소" readonly><br>
                             <input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">
-                            <input type="text" id="extraAddress" name="extraAddress" placeholder="참고항목" disabled>
+                            <input type="text" id="extraAddress" name="extraAddress" placeholder="참고항목" readonly>
                             <input type="hidden" id="coordinate" name="coordinate">
                             <div id="map" style="width:1110px;height:500px;margin-top:10px;display:none"></div>
 

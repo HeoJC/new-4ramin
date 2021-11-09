@@ -30,15 +30,13 @@ minvalue 1 ;
 select * from resumes;
 
 CREATE TABLE resumes (
-	rsm_idx	        number	NOT NULL PRIMARY KEY,         	-- 시퀸스
-	rsm_name varchar2(20) NOT NULL,				-- 이름 
+	rsm_idx	        number	NOT NULL,         	-- 시퀸스
 	user_id	        varchar2(20)	NOT NULL, 	-- 유저 아이디 값 받아서
 	rsm_birthday    	date	NULL,			-- 생년월일 (yyyy-mm-dd
 	rsm_gender	    varchar2(10)	NULL,		-- 성별
-	rsm_education	varchar2(2000)	NULL,		-- 학력
-	rsm_career	    varchar2(2000)	NULL,		-- 경력
-	rsm_certificate	VARCHAR(2000)	NULL,		-- 자격증
+	rsm_education	varchar2(50)	NULL,		-- 학력
+	rsm_career	    varchar2(50)	NULL,		-- 경력
+	rsm_certificate	VARCHAR(255)	NULL,		-- 자격증
 	rsm_photo	varchar2(200)	NULL,			-- 사진
-	rsm_tel	varchar2(20)	NULL,				-- 연락처
-	rsm_title varchar2(500) NULL
+	rsm_tel	varchar2(20)	NULL				-- 연락처
 );

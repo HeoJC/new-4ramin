@@ -71,7 +71,7 @@
         </div>
         <div class="row mb-5">
           <div class="col-lg-12">
-            <form id="frm" class="p-4 p-md-5 border rounded" action="UsersJoin.do">
+            <form id="frm" class="p-4 p-md-5 border rounded">
               
               <br>
               <h6 class="text-black mb-5 border-bottom pb-2">*표시는 필수입력사항입니다</h6>
@@ -95,6 +95,8 @@
                 <label for="job-title">* 이름</label>
                 <input type="text" class="form-control" id="user_name" name="user_name" placeholder="본인 이름을 입력주세요">
               </div>
+              
+             
 
               <div class="form-group">
                 <label for="email">* 연락처</label>
@@ -104,12 +106,6 @@
                <div class="form-group">
                 <label for="job-title">Email</label>
                 <input type="text" class="form-control" id="user_email" name="user_email" placeholder="이메일을 입력주세요">
-              </div>
-              <div>
-              	<input type="hidden" id="user_auth" name="user_auth" value="USER">
-              </div>
-              <div>
-              	<input type="checkbox"> <a>4ramin 에서 호객님의 정보를 기업에게 공개할수도있습니다.</a>
               </div>
               <br>
               <h3 class="text-black mb-5 border-bottom pb-2">4ramin 에 오신것을 환영합니다</h3>
@@ -124,7 +120,7 @@
                 <a href="main.do" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>홈으로</a>
               </div>
               <div class="col-6">
-                <button onclick="userJoin()" class="btn btn-block btn-primary btn-md">가입하기</button>
+                <button onclick="userJoin()" class="btn btn-block btn-primary btn-md">가입하기;</button>
               </div>
             </div>
           </div>

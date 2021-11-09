@@ -37,10 +37,4 @@ public class UsersServiceImpl implements UsersService {
 		return map.usersDelete(vo);
 	}
 
-	@Override
-	public int usersUpdate(UsersVO vo) {
-		// TODO Auto-generated method stub
-		return map.usersUpdate(vo);
-	}
-
 }

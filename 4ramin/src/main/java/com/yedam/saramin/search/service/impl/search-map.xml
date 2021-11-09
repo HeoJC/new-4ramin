@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.yedam.saramin.search.service.SearchMapper">
+
+	<select id="search" resultType="com.yedam.saramin.search.Search">
+		select * from (
+		select rownum as rno, adt_idx, a.com_id as
+		com_id, title, body, career, adt_exp, adt_email, adt_imgsrc, sal_type,
+		sal_howmuch, adt_address, com_pw, com_name, com_intro, com_phone,
+		com_email, com_loc, com_reg, com_imp, com_man, com_sal, com_like,
+		com_branch from adoptions a, branches b, company c where 1=1 and
+		a.com_id = b.com_id and b.com_id = c.com_id)where 1=1
+		<if test='page_a != 0'>
+		and rno between #{page_a} and #{page_b}
+		</if>
+		<if test='com_name != null'>
+		and com_name like '%'||'마루'||'%'
+		</if>
+		<if test='adt_address != null'>
+		and adt_address like '%'||#{adt_address}||'%'
+		</if>
+		<if test='com_branch != null'>
+		and com_branch like '%'||#{com_branch}||'%'
+		</if>
+	</select>
+	
+	<select id="searchDistinct" resultType="com.yedam.saramin.search.Search">
+		select distinct com_branch from branches
+	</select>
+
+</mapper>
