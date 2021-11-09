@@ -73,7 +73,7 @@
 								<a href="javascript:void(0)">채용</a>
 								<ul class="dropdown">
 
-									<li><a href="adtSelectAll.do">전체 채용공고</a></li>
+									<li><a href="searchInfo.do">전체 채용공고</a></li>
 									<li><a href="adtInsertForm.do">채용공고 등록</a></li>
 								</ul>
 							</li>
@@ -141,9 +141,7 @@
 							<h1 class="text-white font-weight-bold">채용공고 찾아보기</h1>
 							<p>당신의 가족이 되어줄 기업을 찾아보세요</p>
 						</div>
-						<%-- 폼 액션 jobSearchedResult.do --%>
-						<form name="jobSearch" method="post" class="search-jobs-form" action="adtSelect.do">
-
+						<form name="searchInfo" method="post" class="search-jobs-form" action="searchInfo.do">
 
 							<div class="row mb-5">
 								<%-- 텍스트 기업이름 comName --%>
@@ -154,21 +152,17 @@
 
 								<%-- 셀렉트 지역선택 comLocation --%>
 								<div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-									<select name="comLocation" class="selectpicker" name data-style="btn-white btn-lg"
-										data-width="100%" data-live-search="false" title="지역">
-										<%-- <c:forEach items="${ }" var="">
-										</c:forEach> --%>
-										<option>지역1</option>
-									</select>
+									<input name="adtAddress" type="text" class="form-control form-control-lg"
+										placeholder="지역">
 								</div>
 
 								<!--  셀렉트 업무선택 comBranch-->
 								<div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
 									<select name="comBranch" class="selectpicker" data-style="btn-white btn-lg" data-width="100%"
 										data-live-search="false" title="업무 분야">
-										<%-- <c:forEach items="${ }" var="">
-										</c:forEach> --%>
-										<option>업무분야1</option>
+										<c:forEach items="${result }" var="item">
+										<option>${item.com_branch }</option>
+										</c:forEach>
 									</select>
 								</div>
 
