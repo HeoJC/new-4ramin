@@ -24,7 +24,7 @@
     			url : "companyLike.do?com_id=" + com_id ,
     			type : "get" ,
     			data : {
-    				com_id : com_
+    				com_id : com_id
     			} ,    			
     			success : function() {
     				likeview() 
@@ -104,7 +104,8 @@
               <div>
                 <h2>${company.com_name }</h2>
                 <div>
-                  <span class="m-2"><span class="icon-room mr-2"></span>${company.com_loc }</span>  
+                  <span class="m-2"><span class="icon-room mr-2"></span>${company.com_loc }</span>
+                  <span class="m-2" onclick='location.href="searchInfo.do?comName=${company.com_name}"'><span class="icon-rocket mr-3"></span>해당 기업의 공고 보러가기</span>  
                 </div>
               </div>
             </div>

@@ -15,37 +15,56 @@
 	<link rel="stylesheet" href="css/quill.snow.css">
 	
 	<script type="text/javascript">
+	
 		function companyDelete() {
-			var id1 = "${id}" ;
-			var id2 = $("#com_id").val() ;
-			var pw1 = "${pw}" ;
-			var pw2 = $("#com_pw").val() ;
-			var reg1 = "${com_reg}" ;
-			var reg2 = $("#com_reg").val() ;
 			
-			if ( id2 == "" || pw2 == "" || reg2 == "") {
-				alert("내용을 입력하세요") ;
-				return 
-			}
-			if ( id1 != id2 ) {
-				alert("본인의 아이디와 일치하지 않습니다")
+			var id = $("#com_id").val() ;
+			var pw = $("#com_pw").val() ;
+			var reg = $("#com_reg").val() ;
+			
+			if ( id == "" ) {
+				alert("아이디를 입력하세요")
 				frm.com_id.focus() ;
 				return
 			}
-			if ( pw1 != pw2 ) {
-				alert("비밀번호가 일치하지 않습니다")
+			if ( pw == "" ) {
+				alert("비밀번호를 입력하세요")
 				frm.com_pw.focus() ;
 				return
 			}
-			if ( reg1 != reg2 ) {
-				alert("사업자 등록번호가 일치하지 않습니다")
+			if ( reg == "" ) {
+				alert("사업자 등록번호를 입력하세요")
 				frm.com_reg.focus() ;
 				return
 			}
+			callDelete() ;
+		}
+		
+		function callDelete() {
 			
-			alert("탈퇴되었습니다") ;
-			frm.action = "companyDelete.do" ;
-			frm.submit() ;
+			var id = $("#com_id").val() ;
+			var pw = $("#com_pw").val() ;
+			var reg = $("#com_reg").val() ;
+			
+			$.ajax({
+				url : "companyDelete.do" ,
+				type : "get" ,
+				data : {
+					com_id : id ,
+					com_pw : pw ,
+					com_reg : reg
+				} ,
+				success : function(result) {
+					alert(result) ;
+					if ( result === "탈퇴가 완료되었습니다") {
+						move() ;
+					}
+				}
+			})
+		}
+		
+		function move() {
+			location.href = "main.do" ;
 		}
 	</script>
 </head>
@@ -55,7 +74,7 @@
 			<div class="row">
 				<div class="col-lg-6 mb-5">
 					<h2 class="mb-4">사업자 본인확인</h2>
-					<form id="frm" action="companyDelete.do" class="p-4 border rounded">
+					<form id="frm" class="p-4 border rounded">
 
 						<div class="row form-group">
 							<div class="col-md-12 mb-3 mb-md-0">
@@ -80,7 +99,7 @@
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12">
-								<button onclick="companyDelete()" class="btn px-4 btn-primary text-white">탈퇴하기</button>									
+								<button type="button" onclick="companyDelete()" class="btn px-4 btn-primary text-white">탈퇴하기</button>									
 							</div>
 						</div>
 					</form>

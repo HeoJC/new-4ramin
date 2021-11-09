@@ -99,7 +99,7 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new Logout()) ; // 로그아웃 (테스트끝)
 		map.put("/companyJoinForm.do", new CompanyJoinForm()) ; // 기업 회원가입 폼 호출 (테스트끝)
 		map.put("/companyJoin.do", new CompanyJoin()) ; // 기업 회원가입 처리 (테스트끝)
-		map.put("/companyJoinCheck.do", new CompanyJoinCheck()) ; // 기업 회원가입 아이디 중복체크
+		map.put("/companyJoinCheck.do", new CompanyJoinCheck()) ; // 기업 회원가입 아이디 중복체크 (테스트끝)
 		map.put("/companySelectList.do", new CompanySelectList()) ; // 기업 전체목록 조회 (테스트끝)
 		map.put("/companySelect.do", new CompanySelect()) ; // 기업 상세 정보 조회 (테스트끝)
 		map.put("/companyMyInfo.do", new CompanyMyInfo()) ; // 기업 내 정보 보기 (테스트끝)

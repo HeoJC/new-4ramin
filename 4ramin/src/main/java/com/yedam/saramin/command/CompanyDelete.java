@@ -27,25 +27,25 @@ public class CompanyDelete implements Command {
 		vo3.setCom_id(request.getParameter("com_id")) ;
 		
 		String id = String.valueOf(session.getAttribute("id")) ;
-		String viewPage = null ;
+		String pw = String.valueOf(session.getAttribute("pw")) ;
+		String com_reg = String.valueOf(session.getAttribute("com_reg")) ;
+		String message = "" ;		
 		
-		if (id.equals(request.getParameter("com_id")) || id.equals("admin")) {
-			int n = companyDao.deleteCompany(vo) ;
+		if (id.equals(request.getParameter("com_id")) && pw.equals(request.getParameter("com_pw"))
+				&& com_reg.equals(request.getParameter("com_reg")) || id.equals("admin")) {
+			companyDao.deleteCompany(vo) ;
 			companyDao.deleteSalCompany(vo2) ;
 			companyDao.deleteBranchCompany(vo3) ;
+			
+			message = "탈퇴가 완료되었습니다" ;
 			
 			if (!id.equals("admin")) {
 				session.invalidate() ;
 			}
-			
-			if (n != 0) {
-				viewPage = "main.do" ;
-			} else {
-				viewPage = "company/companyDeleteForm" ;
-			}
 		} else {
-			viewPage = "company/companyDeleteForm" ;
+			message = "아이디 또는 비밀번호 또는 사업자번호를 확인하세요" ;
 		}
-		return viewPage ;
+		
+		return "ajax:" + message ;
 	}
 }
