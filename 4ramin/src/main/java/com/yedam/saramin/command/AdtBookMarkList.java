@@ -21,6 +21,7 @@ public class AdtBookMarkList implements Command {
 		String user_id = String.valueOf(session.getAttribute("id")) ;
 		
 		vo.setUser_id(user_id) ;
+		
 		String json = new Gson().toJson(companyDao.selectAdtBookMarkList(vo)) ;
 		
 		return "ajax:" + json ;

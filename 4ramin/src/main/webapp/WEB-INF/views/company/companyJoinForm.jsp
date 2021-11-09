@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>4RAMIN</title>
+
     <link rel="stylesheet" href="css/custom-bs.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
     <link rel="stylesheet" href="css/bootstrap-select.min.css">
@@ -13,6 +14,9 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="css/quill.snow.css">
+    
+    <script src="js/jquery.min.js"></script>
+    
 <script type="text/javascript">
 	function companyJoin() {
 		
@@ -22,6 +26,7 @@
 		var com_name = frm.com_name.value ;
 		var com_intro = frm.com_intro.value ;
 		var com_sal = frm.com_sal.value ;
+		var checkButton = frm.checkButton.value ;
 		
 		if ( com_id == "") {
 			alert("아이디를 입력하세요") ;
@@ -58,10 +63,44 @@
 			frm.com_sal.focus() ;
 			return ;
 		}
+		if ( checkButton === "중복 미확인") {
+			alert("아이디 중복체크를 해주세요") ;
+			frm.com_sal.focus() ;
+			return ;
+		}
 		frm.action = "companyJoin.do" ;
 		frm.submit() ;
 		
 		alert("회원가입이 완료되었습니다. 홈페이지로 이동합니다")
+	}
+	
+	function checkid() {
+		
+		var com_id = frm.com_id.value ;
+		
+		if ( com_id == "" ) {
+			alert("아이디를 입력하세요") ;
+			frm.com_id.focus() ;
+			return ;
+		}
+		
+		$.ajax({
+			url : "companyJoinCheck.do?com_id=" + com_id ,
+			type : "get" ,
+			data : {
+				com_id : com_id 
+			} ,
+			success : function(result) {
+				alert(result) ;
+				if (result === "이미 가입된 아이디입니다") {
+					frm.com_id.value = "" ;
+					frm.com_id.focus() ;
+				} else {
+					frm.checkButton.value = "중복 확인 완료" ;
+				}
+			}
+		})
+		
 	}
 </script>
 </head>
@@ -87,6 +126,11 @@
               <div class="form-group">
                 <label for="email">* 아이디</label>
                 <input type="text" class="form-control" id="com_id" name="com_id" placeholder="기업의 로그인 아이디를 입력하세요">
+              </div>
+              
+              <div class="form-group">
+                <button type="button" class="btn btn-primary border-widt" onclick="checkid()" value="test">아이디 중복 검사</button>
+                <input id="checkButton" class="btn btn-primary border-widt" readonly value="중복 미확인">
               </div>
               
               <div class="form-group">
@@ -177,7 +221,6 @@
       </div>
     </section>
     
-    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
     <script src="js/stickyfill.min.js"></script>

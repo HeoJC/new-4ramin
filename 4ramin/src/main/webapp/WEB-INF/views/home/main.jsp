@@ -23,6 +23,13 @@
 
 	<!-- MAIN CSS -->
 	<link rel="stylesheet" href="css/style.css">
+	
+	<script type="text/javascript">
+		function move(m) {
+			location.href = m ;
+		}
+	</script>
+	
 </head>
 
 <body id="top">
@@ -56,6 +63,7 @@
 					<nav class="mx-auto site-navigation">
 						<ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
 						
+							<li><a href="main.do" class="nav-link active">홈</a></li>
 						<!-- 최창인 -->
 						<li class="has-children">
 								<a href="javascript:void(0)">유저관련</a>
@@ -67,7 +75,6 @@
 							</li>
 							<!-- 최창인 End -->
 							
-							<li><a href="main.do" class="nav-link active">홈</a></li>
 
 							<li class="has-children">
 								<a href="javascript:void(0)">채용</a>
@@ -90,36 +97,43 @@
 							<li class="has-children">
 								<a href="javascript:void(0)">기업</a>
 								<ul class="dropdown">
-
-									<li><a href="companyJoinForm.do">기업 회원가입 (임시로 여기)</a></li>
 									<li><a href="companySelectList.do">기업 목록</a></li>
+									<c:if test="${not empty com_reg}">
 									<li><a href="companyMyInfo.do">기업 나의 정보</a></li>
 									<li><a href="companyUpdateForm.do">기업 정보 수정 / 탈퇴</a></li>
+									</c:if>
 								</ul>
 							</li>
-							
-							<li class="d-lg-none"><a href="loginForm.do">로그인</a></li>
-							<li class="d-lg-none"><a href="logout.do">로그아웃</a></li>
 						</ul>
 					</nav>
 
 					<div class="right-cta-menu text-right d-flex aligin-items-center col-6">
 						<div class="ml-auto">
 							<c:if test="${empty id}">
-							<%-- <c:if test="${not empty sessionScope.userId}"> --%>
-							<a href="UsersJoinForm.do"
-								class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
-								<span class="mr-2 icon-add"></span>회원가입</a>
+								<select name="comBranch" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block has-children" data-style="btn-white btn-lg" data-width="100%"
+								data-live-search="false" onchange="move(value)">
+									<option>회원가입 선택</option>
+									<option value="UsersJoinForm.do">개인 회원가입</option>
+									<option value="companyJoinForm.do">기업 회원가입</option>
+								</select>
 								<a href="loginForm.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
-								<span class="mr-2 icon-lock_outline"></span>로그인</a>
+									<span class="mr-2 icon-lock_outline"></span>로그인
+								</a>
 							</c:if>
 							<c:if test="${not empty id}">
-								<c:if test="${id == 'admin' }">
-										<a href="#" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
+								<c:if test="${empty com_reg }">
+									<c:if test="${id != 'admin' }">
+										<a href="bookMarkForm.do" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
+											<span class="mr-2 icon-add"></span>즐겨찾기
+										</a>
+									</c:if>
+									<c:if test="${id == 'admin' }">
+										<a href="adminPage.do" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
 											<span class="mr-2 icon-add"></span>관리자페이지
 										</a>
 									</c:if>
-								<a href="#" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
+								</c:if>
+								<a href="logout.do" class="btn btn-primary border-width-2 d-none d-lg-inline-block">
 								<span class="mr-2 icon-lock_outline"></span>로그아웃</a>
 							</c:if>
 						</div>

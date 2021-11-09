@@ -17,7 +17,6 @@ public class CompanySelect implements Command {
 		CompanyVO vo1 = new CompanyVO() ;
 		vo1.setCom_id(request.getParameter("com_id")) ;
 		vo1 = companyDao.selectCompany(vo1) ;
-		System.out.println(vo1.getCom_intro());
 		request.setAttribute("company", vo1) ;
 		
 		CompanyVO vo2 = new CompanyVO() ;
