@@ -85,7 +85,7 @@ to {
 
 .modal-header {
 	padding: 2px 16px;
-	background-color: #5cb85c;
+	background-color: #89ba16;
 	color: white;
 }
 
@@ -95,9 +95,22 @@ to {
 
 .modal-footer {
 	padding: 2px 16px;
-	background-color: #5cb85c;
+	background-color: #89ba16;
 	color: white;
 }
+ .modaltable {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  .th {
+    border-bottom: 1px solid #444444;
+    border-left: 1px solid #444444;
+    padding: 10px;
+  }
+  th:first-child, .tt:first-child {
+    border-left: none;
+  }
 /* 체크박스 */
 </style>
 <title>개인회원목록</title>
@@ -114,7 +127,8 @@ function ModalDelivery(v) {
 				$('#one').empty();
 			for (let data in str ){
 				$('#one').append(
-					$('<td />').html(str[data]),	
+		
+					$('<td />').html(str[data])	
 				);
 	
 			}
@@ -126,33 +140,6 @@ function ModalDelivery(v) {
 
 }
 
-function DeleteFunction() {
-	 var cnt = $("input[name='reportChkBxRow']:checked").length;
-     var arr = new Array();
-     $("input[name='reportChkBxRow']:checked").each(function() {
-         arr.push($(this).attr('id'));
-     })x;
-     if(cnt == 0){
-         alert("선택된 글이 없습니다.");
-     }
-     else{
-         $.ajax = {
-             type: "get"
-             url: "UserDeleto.do"
-             data: "arr=" + arr + "&CNT=" + cnt,
-             dataType:"json",
-             success: function(jdata){
-                 if(jdata != 1) {
-                     alert("삭제 오류");
-                 }
-                 else{
-                     alert("삭제 성공");
-                 }
-             },
-             error: function(){alert("서버통신 오류");}
-         };
-     }
- }
 </script>
 </head>
 <body>
@@ -162,11 +149,7 @@ function DeleteFunction() {
 				<table id="myBtn">
 					<tr align="center">
 						<th width="100">아이디</th>
-						<th width="100">비밀벙호</th>
-						<th width="100">이름</th>
-						<th width="200">연락처</th>
-						<th width="200">이메일</th>
-						<th width="200">권한</th>
+						<th width="200">이름</th>
 					</tr>
 
 					<!-- td 어디를 누르든 모달이 열리면서 , 누른 id값을 상세보기 한다 -->
@@ -174,26 +157,12 @@ function DeleteFunction() {
 						<tr onmouseover='this.style.background="#fcecae";'
 							onmouseleave='this.style.background="#FFFFFF";'
 							onclick="ModalDelivery('${user.user_id }')">
-
 							<td align="center">${user.user_id }</td>
-							<td align="center">${user.user_password }</td>
 							<td align="center">${user.user_name }</td>
-							<td align="center">${user.user_phone }</td>
-							<td align="center">${user.user_email }</td>
-							<td align="center">${user.user_auth }</td>
-							<td><input type="checkbox" onclick="event.cancelBubble=true"
-								name="reportChkBxRow" id="'${user.user_id }'"></td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
-			<br>
-			<div align="right">
-				<!-- 어드민만 버튼 보이게.. -->
-				<input type="button" onclick="DeleteFunction()"
-					value="삭제">
-			</div>
-
 		</div>
 	</div>
 
@@ -203,27 +172,27 @@ function DeleteFunction() {
 		<div class="modal-content">
 			<div class="modal-header">
 				<span class="close"></span>
-				<h4>회원상세보기</h4>
+				<h5>회원상세보기</h5>
 			</div>
 			<div class="modal-body">
 				<form action="">
 					<div>
-						<table>
+						<table class="modaltable">
 							<tr align="center">
-								<th width="200">아이디</th>
-								<th width="200">비밀벙호</th>
-								<th width="200">이름</th>
-								<th width="200">연락처</th>
-								<th width="200">이메일</th>
-								<th width="200">권한</th>
+								<th width="200" class="th">아이디</th>
+								<th width="200" class="th">이름</th>
+								<th width="200" class="th">연락처</th>
+								<th width="200" class="th">이메일</th>
+
 							</tr>
+							<!-- 단건 조회 -->
 							<tr id="one" align="center" />
 						</table>
 					</div>
 				</form>
 			</div>
 			<div class="modal-footer">
-				<h2>이력서 출력 해줄 부분</h2>
+				<h5>이력서 출력 해줄 부분</h5>
 			</div>
 		</div>
 	</div>

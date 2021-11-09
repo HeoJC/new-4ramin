@@ -21,11 +21,14 @@ public class UserOne implements Command {
 		UsersVO vo = new UsersVO();
 		Gson gson = new GsonBuilder().create();
 		String str = null;
-
+		
+		
 		
 		vo.setUser_id(request.getParameter("uid"));
-		vo = usersDao.userssSelect(vo);
-		str = gson.toJson(usersDao.userssSelect(vo));
+		vo = usersDao.usersSelectlookup(vo);
+		str = gson.toJson(usersDao.usersSelectlookup(vo));
+			
+		System.out.println("vo: " + vo);
 		
 		return "ajax:"+str;
 	}
