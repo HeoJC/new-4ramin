@@ -28,22 +28,32 @@
 	</section>
 	<!-- END OF HEADER -->
 	<header class="site-navbar mt-3">
-			<div class="container-fluid">
+						<div class="container-fluid">
 				<div class="row align-items-center">
 					<div class="site-logo col-6"><a href="main.do">4RAMIN</a></div>
 
 					<nav class="mx-auto site-navigation">
 						<ul class="site-menu js-clone-nav d-none d-xl-block ml-0 pl-0">
-
+						
 							<li><a href="main.do" class="nav-link active">홈</a></li>
+						<!-- 최창인 -->
+						<li class="has-children">
+								<a href="javascript:void(0)">유저관련</a>
+								<ul class="dropdown">
+
+									<li><a href="UsersJoinForm.do">회원가입</a></li>
+									<li><a href="UserList.do">회원목록</a></li>
+								</ul>
+							</li>
+							<!-- 최창인 End -->
+							
 
 							<li class="has-children">
 								<a href="javascript:void(0)">채용</a>
 								<ul class="dropdown">
 
-								<%-- adtSelectAll.do --%>
-									<li><a href="adtSelectAll.do">전체 채용공고</a></li>
-									<li><a href="#">드랍다운메뉴2</a></li>
+									<li><a href="searchInfo.do">전체 채용공고</a></li>
+									<li><a href="adtInsertForm.do">채용공고 등록</a></li>
 								</ul>
 							</li>
 
@@ -51,7 +61,6 @@
 								<a href="javascript:void(0)">이력서</a>
 								<ul class="dropdown">
 
-								<%-- resumeForm.do --%>
 									<li><a href="resumeForm.do">내 이력서</a></li>
 									<li><a href="#">이력서 관리</a></li>
 								</ul>

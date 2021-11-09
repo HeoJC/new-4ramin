@@ -20,5 +20,6 @@
     <mapper resource="com/yedam/saramin/users/serviceImpl/Users-map.xml" />
     <mapper resource="com/yedam/saramin/adoptions/service/impl/adoption-map.xml" />
     <mapper resource="com/yedam/saramin/search/service/impl/search-map.xml" />
+    <mapper resource="com/yedam/saramin/resume/resumeMap.xml"/>
   </mappers>
 </configuration>

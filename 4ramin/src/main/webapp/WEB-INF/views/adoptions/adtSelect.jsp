@@ -27,6 +27,13 @@
             color: black;
         }
     </style>
+    <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↓ ------------------- -->
+    <script type="text/javascript">
+    	function adtbookmarkInsert() {
+    		bookmark.submit() ;
+    	}
+    </script>
+    <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↑ ------------------- -->
 </head>
 
 <body id="top">
@@ -120,9 +127,12 @@
 
 
 
-            </div>
+</div>
         </section>
         <section class=" py-3 site-section mb-5">
+        <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↓ ------------------- -->
+        <form id="bookmark" action="adtBookmarkInsert.do" target="iframe">
+        <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↑ ------------------- -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-4 text-center">
@@ -131,11 +141,24 @@
                     <div class="col-md-4 text-center">
                         <a href="#" class="btn btn-md btn-primary border-width-2 d-block">이 공고에 입사지원</a>
                     </div>
+                    <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↓ ------------------- -->
+                    <div class="col-md-4 text-center">
+                        <a href="javascript:void(0);" onclick="adtbookmarkInsert()" class="btn btn-md btn-outline-primary border-width-2 d-block">즐겨찾기 추가</a>
+                    </div>
+                    <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↑ ------------------- -->
                 </div>
             </div>
+        <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↓ ------------------- -->
+     	<input type="hidden" name="adt_idx" value="${adt.adt_idx }">
+		<input type="hidden" name="com_id" value="${adt.com_id }">
+		<input type="hidden" name="title" value="${adt.title }">
+		<input type="hidden" name="adt_exp" value="${adt.adt_exp }">    
+        </form>
+        <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↑ ------------------- -->
         </section>
-
-
+        
+        <iframe name="iframe" style="display:none;"></iframe>
+        
         <section class="site-section bg-light">
             <div class="container">
                 <div class="row mb-5">

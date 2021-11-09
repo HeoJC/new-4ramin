@@ -28,8 +28,7 @@ public class UsersJoin implements Command {
 		String viewPage = null;
 		
 		if(a != 0) {
-			request.setAttribute("message", "회원가입 성공");
-			viewPage = "users/usersJoinSuccess";
+			viewPage = "main.do";
 		}
 		return viewPage;
 	}

@@ -26,7 +26,15 @@ public class ComBookMarkInsert implements Command {
 		vo.setCom_intro(request.getParameter("com_intro")) ;
 		vo.setCom_sal(request.getParameter("com_sal")) ;
 		
-		companyDao.insertComBookMark(vo) ;
+		CompanyVO vo2 = new CompanyVO() ;
+		
+		vo2.setCom_id(request.getParameter("com_id")) ;
+		
+		if (companyDao.selectCompany(vo2) != null) {
+			companyDao.insertComBookMark(vo) ;
+		} else {
+			request.setAttribute("message", "이미 즐겨찾기에 추가되어있습니다") ;
+		}
 		
 		String viewPage = "bookMarkForm.do" ;
 		
