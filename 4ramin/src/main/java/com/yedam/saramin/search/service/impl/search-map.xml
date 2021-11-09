@@ -15,7 +15,7 @@
 		and rno between #{page_a} and #{page_b}
 		</if>
 		<if test='com_name != null'>
-		and com_name like '%'||'마루'||'%'
+		and com_name like '%'||#{com_name}||'%'
 		</if>
 		<if test='adt_address != null'>
 		and adt_address like '%'||#{adt_address}||'%'

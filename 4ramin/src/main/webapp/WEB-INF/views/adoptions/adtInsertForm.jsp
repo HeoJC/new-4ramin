@@ -77,7 +77,7 @@
             contents = contents + "<br>" + sentences[i].innerHTML;
         }
         document.adtInsertFrm.contents.value = contents;
-        document.adtInsertFrm.comId.value = "hihi"; //${sessionScope.id };
+        document.adtInsertFrm.comId.value = "${sessionScope.id }";
         console.log(document.adtInsertFrm.contents.value);
         adtInsertFrm.submit();
     }

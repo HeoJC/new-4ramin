@@ -38,9 +38,9 @@ public class SearchInfo implements Command {
 		} else {
 			vo.setPage_a(1);
 			vo.setPage_b(10);
+			pageNum = "1";
 		}
 		
-		System.out.println(vo.getPage_a());
 		System.out.println(vo.getCom_name());
 		System.out.println(vo.getAdt_address());
 		System.out.println(vo.getCom_branch());
@@ -48,18 +48,23 @@ public class SearchInfo implements Command {
 		
 		List<Search> list = new ArrayList<>(); 
 		list = searchDAO.search(vo);
-		System.out.println(list);
 		request.setAttribute("adoptions", list);
 		request.setAttribute("cnt", list.size());
 		request.setAttribute("pageName", "채용공고");
 		
 		
-		for(int i=0;i<list.size();i++) {
-		System.out.println(list.get(i).getTitle());
-		System.out.println(list.get(i).getAdt_exp());
-		System.out.println(list.get(i).getCom_branch());
-		System.out.println(list.get(i).getCom_name());
-		}
+//		for(int i=0;i<list.size();i++) {
+//		System.out.println(list.get(i).getTitle());
+//		System.out.println(list.get(i).getAdt_exp());
+//		System.out.println(list.get(i).getCom_branch());
+//		System.out.println(list.get(i).getCom_name());
+//		}
+		
+		request.setAttribute("searchPageNum", pageNum);
+		request.setAttribute("searchComName", comName);
+		request.setAttribute("searchAdtAddress", adtAddress);
+		request.setAttribute("searchComBranch", comBranch);
+		request.setAttribute("result", searchDAO.searchDistinct());
 		return "adoptions/adtSelectAll";
 	}
 
