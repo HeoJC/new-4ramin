@@ -112,11 +112,13 @@
           </div>
           <div class="col-lg-4">
             <div class="row">
+              <c:if test="${not empty id }">
               <c:if test="${empty com_reg }">
-              <c:if test="${id != 'admin' }">
+              <c:if test="${id != 'yedam' }">
               <div class="col-6">
                 <a onclick="insertBookmark('${company.com_id}','${company.com_name}','${company.com_intro}','${company.com_sal}')" href="javascript:void(0)" class="btn btn-block btn-light btn-md">기업 즐겨찾기</a>
               </div>
+              </c:if>
               </c:if>
               </c:if>
               <div class="col-6">
