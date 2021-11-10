@@ -141,12 +141,12 @@
               <div class="form-group">
                 <label for="job-region">* 신입 평균 초임</label>
                 <select class="selectpicker border rounded" id="com_sal" name="com_sal" data-style="btn-black" data-width="100%" data-live-search="true" title="신입직원의 평균초임을 선택하세요">
-                      <option>2,400만원 미만</option>
-                      <option>2,400만원 이상 2,500만원 미만</option>
-                      <option>2,500만원 이상 2,600만원 미만</option>
-                      <option>2,600만원 이상 2,700만원 미만</option>
-                      <option>2,700만원 이상</option>
-                      <option>회사 내규에 따름</option>
+                      <option>2500만원</option>
+                      <option>2600만원</option>
+                      <option>2700만원</option>
+                      <option>2800만원</option>
+                      <option>2900만원</option>
+                      <option>3000만원</option>
                     </select>
               </div>
               <input type="hidden" name="com_id" value="${company.com_id }">

@@ -49,10 +49,10 @@
     </script>
     
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" >
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
-
+      
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['연도', '평균연봉 (단위 : 만원)'],
@@ -132,7 +132,6 @@
             
             <div class="mb-5">
               <div id="columnchart_material" style="width: 730px; height: 486px;"></div>
-              <!-- 지도 들어갈 자리 크기는 730 X 486 -->
             </div>
 
           </div>
