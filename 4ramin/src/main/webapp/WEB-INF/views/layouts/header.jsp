@@ -98,12 +98,12 @@
 							</c:if>
 							<c:if test="${not empty id}">
 								<c:if test="${empty com_reg }">
-									<c:if test="${id != 'admin' }">
+									<c:if test="${id != 'yedam' }">
 										<a href="bookMarkForm.do" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
 											<span class="mr-2 icon-add"></span>즐겨찾기
 										</a>
 									</c:if>
-									<c:if test="${id == 'admin' }">
+									<c:if test="${id == 'yedam' }">
 										<a href="adminPage.do" class="btn btn-outline-white border-width-2 d-none d-lg-inline-block">
 											<span class="mr-2 icon-add"></span>관리자페이지
 										</a>

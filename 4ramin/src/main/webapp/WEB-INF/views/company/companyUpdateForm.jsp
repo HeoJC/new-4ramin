@@ -94,7 +94,7 @@
                         
               <div class="form-group">
                 <label for="job-title">* 비밀번호</label>
-                <input type="text" class="form-control" id="com_pw" name="com_pw" placeholder="기업의 로그인 비밀번호를 입력하세요">
+                <input type="password" class="form-control" id="com_pw" name="com_pw" placeholder="기업의 로그인 비밀번호를 입력하세요">
               </div>
               
                <div class="form-group">
