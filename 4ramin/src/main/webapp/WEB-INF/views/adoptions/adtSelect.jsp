@@ -154,8 +154,8 @@
                         <a href="#" class="btn btn-md btn-primary border-width-2 d-block">이 공고에 입사지원</a>
                     </div>
                     <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↓ ------------------- -->
-                    <c:if test="${not empty id } }">
-                    <c:if test="${not empty com_reg }">
+                    <c:if test="${not empty id }">
+                    <c:if test="${empty com_reg }">
                     <div class="col-md-4 text-center">
                         <a href="javascript:void(0);" onclick="adtbookmarkInsert('${adt.adt_idx }','${adt.com_id }','${adt.title }','${adt.adt_exp }')" class="btn btn-md btn-outline-primary border-width-2 d-block">즐겨찾기 추가</a>
                     </div>

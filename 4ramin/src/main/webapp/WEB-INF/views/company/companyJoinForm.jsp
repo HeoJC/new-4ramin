@@ -127,6 +127,7 @@
 			frm.com_reg.value = "" ;
 			frm.com_reg.focus() ;
 		} else {
+			alert("가입 가능한 사업자등록번호입니다") ;
 			frm.regcheck.value = "유효성 확인완료"
 		}	
 	}
