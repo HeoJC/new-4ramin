@@ -23,103 +23,97 @@ public class AdtInsertFormSubmit implements Command {
 		Adoption adtVO = new Adoption();
 		AdoptionService adtDAO = new AdoptionServiceImpl();
 		try {
-	    ServletContext context =request.getSession().getServletContext();
-	    String saveDir = context.getRealPath("./imgUpload");
-		response.setContentType("text/html; charset=utf-8");
-		request.setCharacterEncoding("utf-8");
-		File attachesDir = new File(saveDir);
-		DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
-		fileItemFactory.setRepository(attachesDir);
-		fileItemFactory.setSizeThreshold(1024 * 1024);
-		ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
-		String imgString = "";
-		String addressString = "";
+			ServletContext context = request.getSession().getServletContext();
+			String saveDir = context.getRealPath("./imgUpload");
+			response.setContentType("text/html; charset=utf-8");
+			request.setCharacterEncoding("utf-8");
+			File attachesDir = new File(saveDir);
+			DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
+			fileItemFactory.setRepository(attachesDir);
+			fileItemFactory.setSizeThreshold(1024 * 1024);
+			ServletFileUpload fileUpload = new ServletFileUpload(fileItemFactory);
+			String imgString = "";
+			String addressString = "";
 			List<FileItem> items;
 			items = fileUpload.parseRequest(request);
 			for (FileItem item : items) {
 				if (item.isFormField()) {
 					System.out.printf("파라미터명: %s, 파라미터 값: %s \n", item.getFieldName(), item.getString("utf-8"));
-					if(item.getFieldName().equals("contents")) {
+					if (item.getFieldName().equals("contents")) {
 						System.out.println(item.getString("utf-8"));
 						adtVO.setBody(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("comId")) {
+					if (item.getFieldName().equals("comId")) {
 						System.out.println(item.getString("utf-8"));
 						adtVO.setCom_id(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("email")) {
+					if (item.getFieldName().equals("email")) {
 						System.out.println(item.getString("utf-8"));
 						adtVO.setAdt_email(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("title")) {
+					if (item.getFieldName().equals("title")) {
 						System.out.println(item.getString("utf-8"));
 						adtVO.setTitle(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("career")) {
-						System.out.println(item.getString("utf-8"));						
+					if (item.getFieldName().equals("career")) {
+						System.out.println(item.getString("utf-8"));
 						adtVO.setCareer(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("salType")) {
+					if (item.getFieldName().equals("salType")) {
 						System.out.println(item.getString("utf-8"));
 						adtVO.setSal_type(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("salHowmuch")) {
-						System.out.println(item.getString("utf-8"));						
+					if (item.getFieldName().equals("salHowmuch")) {
+						System.out.println(item.getString("utf-8"));
 						adtVO.setSal_howmuch(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("adtExp")) {
-						System.out.println(item.getString("utf-8"));						
+					if (item.getFieldName().equals("adtExp")) {
+						System.out.println(item.getString("utf-8"));
 						adtVO.setAdt_exp(item.getString("utf-8"));
 					}
-					if(item.getFieldName().equals("postcode")) {
-						System.out.println(item.getString("utf-8"));						
+					if (item.getFieldName().equals("postcode")) {
+						System.out.println(item.getString("utf-8"));
 						addressString += item.getString("utf-8");
 					}
-					if(item.getFieldName().equals("address")) {
-						System.out.println(item.getString("utf-8"));						
-						addressString += "!"+item.getString("utf-8");
+					if (item.getFieldName().equals("address")) {
+						System.out.println(item.getString("utf-8"));
+						addressString += "!" + item.getString("utf-8");
 					}
-					if(item.getFieldName().equals("detailAddress")) {
-						System.out.println(item.getString("utf-8"));						
-						addressString += "@"+item.getString("utf-8");
+					if (item.getFieldName().equals("detailAddress")) {
+						System.out.println(item.getString("utf-8"));
+						addressString += "@" + item.getString("utf-8");
 					}
-					if(item.getFieldName().equals("extraAddress")) {
-						System.out.println(item.getString("utf-8"));						
-						addressString += "#"+item.getString("utf-8");
+					if (item.getFieldName().equals("extraAddress")) {
+						System.out.println(item.getString("utf-8"));
+						addressString += "#" + item.getString("utf-8");
 					}
-					if(item.getFieldName().equals("coordinate")) {
-						System.out.println(item.getString("utf-8"));						
-						addressString += "$"+item.getString("utf-8");
+					if (item.getFieldName().equals("coordinate")) {
+						System.out.println(item.getString("utf-8"));
+						addressString += "$" + item.getString("utf-8");
 					}
 					adtVO.setAdt_address(addressString);
-				}else {
-					System.out.printf("파라미터명 : %s, 파일명 : %s,  파일크기 : %s bytes \n", item.getFieldName(), item.getName(), item.getSize());
-					imgString += "&"+item.getName();
+				} else {
+					System.out.printf("파라미터명 : %s, 파일명 : %s,  파일크기 : %s bytes \n", item.getFieldName(), item.getName(),
+							item.getSize());
+					imgString += "&" + item.getName();
 					adtVO.setAdt_imgsrc(imgString);
-					//tmp 경로: .metadata\plugins\org.eclipse.wst.server.core\tmp0
+					// tmp 경로: .metadata\plugins\org.eclipse.wst.server.core\tmp0
 					System.out.println(attachesDir.getAbsolutePath());
-					if(item.getSize()>0) {
+					if (item.getSize() > 0) {
 						String separator = File.separator;
 						int index = item.getName().lastIndexOf(separator);
-						String fileName = item.getName().substring(index+1);
+						String fileName = item.getName().substring(index + 1);
 						File uploadFile = new File(attachesDir + separator + fileName);
 						item.write(uploadFile);
 					}
 				}
 			}
-			System.out.println("업로드 완료");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-///////////////////////////////////////////////////////////////////////////////////////////////////////		
-		
+
 		int r = adtDAO.insertAdoption(adtVO);
-//		if(r!=1) {
-			System.out.println("not 1");
-//			return "adtInsertForm.do";
-//		} else {
-			return "main.do";
-//		}
+		System.out.println(r + "업로드 완료");
+		return "searchInfo.do";
 	}
 }

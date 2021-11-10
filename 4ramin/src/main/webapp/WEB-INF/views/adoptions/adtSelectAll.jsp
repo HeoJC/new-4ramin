@@ -35,9 +35,8 @@
 
 								<!--  셀렉트 업무선택 comBranch-->
 								<div class="col-12 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-									<select name="comBranch" data-style="btn-white btn-lg" data-width="100%"
-										data-live-search="false" title="업무 분야">
-										<option>업무분야</option>
+									<select name="comBranch" style="width:240px; font-size:30px">
+										<option value="">업무분야</option>
 										<c:forEach items="${result }" var="item">
 										<option>${item.com_branch }</option>
 										</c:forEach>
@@ -49,20 +48,6 @@
 									<button type="submit"
 										class="btn btn-primary btn-lg btn-block text-white btn-search"><span
 											class="icon-search icon mr-2"></span>검색</button>
-								</div>
-							</div>
-
-							<%-- 해시태그 --%>
-							<div class="row">
-								<div class="col-md-12 popular-keywords">
-									<h3>트렌드: </h3>
-									<ul class="keywords list-unstyled m-0 p-0">
-										<%-- <c:forEach items="${ }" var="">
-										</c:forEach> --%>
-										<li><a href="#" class="">#웹개발</a></li> <!--여기는 하드코딩하겠습니다-->
-										<li><a href="#" class="">#Java</a></li>
-										<li><a href="#" class="">#Yedam</a></li>
-									</ul>
 								</div>
 							</div>
 						</form>
@@ -90,7 +75,7 @@
                                 <strong>${adt.com_id }</strong>
                             </div>
                             <div class="job-listing-location mb-3 mb-sm-0 custom-width w-25">
-                                <span class="icon-room"></span> 위치
+                                <span class="icon-room"></span>${fn:split(fn:split(adt.adt_address,'@')[0], '!')[1] }
                             </div>
                             <div class="job-listing-meta" align="right">
                                 <span class="badge badge-danger">D-101</span><br>
@@ -107,7 +92,7 @@
 
             <div class="row pagination-wrap">
                 <div class="col-md-6 text-center text-md-left mb-4 mb-md-0">
-                    <span>${cnt }개 결과 중 00개 표시</span>
+                    <span>현재 페이지 ${cnt }개 결과</span>
                 </div>
                 <div class="col-md-6 text-center text-md-right">
                     <div class="custom-pagination ml-auto">
@@ -125,7 +110,6 @@
         </div>
     </section>
 </body>
-<<<<<<< HEAD
 <script>
 function pageNumberClicked(e, t){
 	if(document.searchInfo.comBranch.value =="업무분야"){
@@ -140,7 +124,4 @@ document.getElementById('pageNums').childNodes[3].innerText = ${searchPageNum};
 document.getElementById('pageNums').childNodes[5].innerText = ${searchPageNum}+1;
 }
 </script>
-=======
-
->>>>>>> branch 'main' of https://github.com/HeoJC/new-4ramin.git
 </html>

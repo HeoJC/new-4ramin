@@ -90,7 +90,6 @@
                         <div class="row mb-4">
 
                             <div class="col-sm-12 col-md-12 mb-4 col-lg-12">
-                                인사담당자: <strong class="strong1">하드코딩</strong><br>
                                 EMAIL: <strong class="strong1">${adt.adt_email }</strong>
                             </div>
 

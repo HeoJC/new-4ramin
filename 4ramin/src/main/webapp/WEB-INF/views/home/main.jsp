@@ -82,7 +82,11 @@
 								<ul class="dropdown">
 
 									<li><a href="searchInfo.do">전체 채용공고</a></li>
+									<c:if test="${not empty id}">
+									<c:if test="${empty com_reg }">
 									<li><a href="adtInsertForm.do">채용공고 등록</a></li>
+									</c:if>
+									</c:if>
 								</ul>
 							</li>
 
