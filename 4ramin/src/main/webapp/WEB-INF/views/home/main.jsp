@@ -65,50 +65,53 @@
 						
 							<li><a href="main.do" class="nav-link active">홈</a></li>
 						<!-- 최창인 -->
+						<c:if test="${not empty id }">
+						<c:if test="${empty com_reg }">
 						<li class="has-children">
 								<a href="javascript:void(0)">유저관련</a>
 								<ul class="dropdown">
-
-									<li><a href="UsersJoinForm.do">회원가입</a></li>
-									<li><a href="UserList.do">회원목록</a></li>
+									
 									<li><a href="UserSelect.do">내정보보기</a></li>
 								</ul>
 							</li>
+						</c:if>
 							<!-- 최창인 End -->
 							
 
 							<li class="has-children">
 								<a href="javascript:void(0)">채용</a>
 								<ul class="dropdown">
-
 									<li><a href="searchInfo.do">전체 채용공고</a></li>
 									<c:if test="${not empty id}">
-									<c:if test="${empty com_reg }">
+									<c:if test="${not empty com_reg }">
 									<li><a href="adtInsertForm.do">채용공고 등록</a></li>
 									</c:if>
 									</c:if>
 								</ul>
 							</li>
-
+							<c:if test="${empty com_reg }">
 							<li class="has-children">
 								<a href="javascript:void(0)">이력서</a>
 								<ul class="dropdown">
-
+									<c:if test="id != admin">
 									<li><a href="resumeForm.do">내 이력서</a></li>
+									</c:if>
 									<li><a href="#">이력서 관리</a></li>
 								</ul>
 							</li>
-							
+							</c:if>
 							<li class="has-children">
 								<a href="javascript:void(0)">기업</a>
 								<ul class="dropdown">
 									<li><a href="companySelectList.do">기업 목록</a></li>
 									<c:if test="${not empty com_reg}">
+									<li><a href="UserList.do">회원목록</a></li>
 									<li><a href="companyMyInfo.do">기업 나의 정보</a></li>
 									<li><a href="companyUpdateForm.do">기업 정보 수정 / 탈퇴</a></li>
 									</c:if>
 								</ul>
 							</li>
+							</c:if>
 						</ul>
 					</nav>
 

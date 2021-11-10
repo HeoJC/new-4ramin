@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 
@@ -153,9 +154,13 @@
                         <a href="#" class="btn btn-md btn-primary border-width-2 d-block">이 공고에 입사지원</a>
                     </div>
                     <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↓ ------------------- -->
+                    <c:if test="${not empty id } }">
+                    <c:if test="${not empty com_reg }">
                     <div class="col-md-4 text-center">
                         <a href="javascript:void(0);" onclick="adtbookmarkInsert('${adt.adt_idx }','${adt.com_id }','${adt.title }','${adt.adt_exp }')" class="btn btn-md btn-outline-primary border-width-2 d-block">즐겨찾기 추가</a>
                     </div>
+                    </c:if>
+                    </c:if>
                     <!-- ------------------- 범수씨 허재철이 작업한곳입니다 ↑ ------------------- -->
                 </div>
             </div>
